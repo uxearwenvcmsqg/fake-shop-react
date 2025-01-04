@@ -1,0 +1,39 @@
+.header {
+  max-width: 1440px;
+  margin: 30px auto;
+  padding: 0 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  &__logo {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    cursor: pointer;
+  }
+
+  &__logo-text {
+    margin: auto auto;
+    h2 {
+      font-size: 18px;
+    }
+    h2:hover {
+      color: rgb(200, 30, 30);
+      transition: all 0.2s ease-in;
+    }
+  }
+
+  &__cart-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    span {
+      font-size: 18px;
+    }
+    img {
+      margin-left: 10px;
+    }
+  }
+}
