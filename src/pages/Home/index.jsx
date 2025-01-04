@@ -1,27 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import './home.scss';
+import { useState, useEffect } from 'react';
 import Categories from '../../components/categories';
 import Product from '../../components/product/index';
-import './home.scss';
-import Sort from '../../components/sort/Sort';
+import Sort from '../../components/sort/index';
 
 function Index() {
   const [products, setProducts] = useState([]);
-
+  
   useEffect(() => {
-    fetch('https://api.escuelajs.co/api/v1/products')
+    fetch('https://dummyjson.com/products')
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then((data) => setProducts(data.products));
   }, []);
 
-  const clothers = products.slice(0, 3).map((obj) => <Product key={obj.id} {...obj} />);
-  
+  const clothers = products.map((obj) => <Product key={obj.id} {...obj} />);
+
   return (
     <>
-      <div className="">
-        {/* <Categories /> */}
+      <div className="container-top">
+        <Categories />
         <Sort />
       </div>
-      <div className="">{clothers}</div>
+      <div className="container-clothers">{clothers} </div>
     </>
   );
 }

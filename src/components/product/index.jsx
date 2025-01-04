@@ -1,16 +1,11 @@
 // eslint-disable-next-line react/prop-types
-import styles from './product.module.scss';
+import './product.scss';
 
-function Product({ id, image, title, price, description, category }) {
+function Product({ id, images, title, price, category }) {
   return (
-    <div className={styles.product__container}>
-      <img
-        src={image}
-        alt={title}
-        style={{ width: '100%', height: '150px', objectFit: 'contain' }}
-      />
+    <div className="product__container">
+      <img src={images} alt="product-image" width={150} height={150}/>
       <h3>{title}</h3>
-      <p>{description}</p>
       <p>
         <strong>Price:</strong> ${price}
       </p>

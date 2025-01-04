@@ -1,0 +1,14 @@
+.container-top {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 50px;
+}
+
+.container-clothers {
+	display: grid;
+	grid-template-columns: 4fr;
+	grid-template-rows: 4fr;
+}
+
