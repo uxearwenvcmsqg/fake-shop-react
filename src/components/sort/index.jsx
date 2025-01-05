@@ -9,11 +9,11 @@ function Sort({ value, onChangeSort }) {
 
   const listSort = [
     { name: 'популярности (ASC)', sortProperty: 'rating' },
-    { name: 'популярности (DESC)', sortProperty: 'rating' },
-    { name: 'цене(ASC)', sortProperty: 'price' },
-    { name: 'цене(DESC)', sortProperty: 'price' },
-    { name: 'алфавиту(ASC)', sortProperty: 'title' },
-    { name: 'алфавиту(DESC)', sortProperty: 'title' },
+    { name: 'популярности (DESC)', sortProperty: 'ratingasc' },
+    { name: 'цене (ASC)', sortProperty: 'price' },
+    { name: 'цене (DESC)', sortProperty: 'priceasc' },
+    { name: 'алфавиту (ASC)', sortProperty: 'title' },
+    { name: 'алфавиту (DESC)', sortProperty: 'titleasc' },
   ];
 
   const selectSortOption = (index) => {

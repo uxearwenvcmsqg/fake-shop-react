@@ -6,19 +6,19 @@ import Sort from '../../components/sort/index';
 
 function Home() {
   const [products, setProducts] = useState([]);
-  const [category, setCategory] = useState('all'); // Стартовое значение "all"
+  const [category, setCategory] = useState('all');
   const [sortType, setSortType] = useState({
     name: 'популярности',
     sortProperty: 'rating',
   });
-
+  
   useEffect(() => {
-    const order = sortType.sortProperty.includes('-') ? 'asc' : 'desc';
-    const sortBy = sortType.sortProperty.replace('-', '');
+    const order = sortType.sortProperty.includes('asc') ? 'desc' : 'asc';
+    const sortBy = sortType.sortProperty.replace('asc', '');
 
     const fetchProducts = async () => {
       try {
-        let url = `https://dummyjson.com/products?sortBy=${sortType.sortProperty}&order=${order}`;
+        let url = `https://dummyjson.com/products?sortBy=${sortBy}&order=${order}`;
 
         if (category !== 'all') {
           url = `https://dummyjson.com/products/category/${category}?sortBy=${sortBy}&order=${order}`;
