@@ -4,11 +4,13 @@
 	align-items: center;
 	justify-content: space-between;
 	padding: 0 50px;
+	margin: 20px auto;
 }
 
 .container-clothers {
+	padding: 0px 50px;
 	display: grid;
-	grid-template-columns: 4fr;
-	grid-template-rows: 4fr;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	gap: 20px;
 }
 
