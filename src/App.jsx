@@ -12,7 +12,7 @@ function App() {
   console.log(searchContext)
 
   const [searchValue, setSearchValue] = useState('');
-
+  
   return (
     <div className="wrapper">
       <Header value = {searchValue} setSearchValue = {setSearchValue}/>

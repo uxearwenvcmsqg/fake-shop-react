@@ -4,6 +4,7 @@ import Categories from '../../components/categories';
 import Product from '../../components/product/index';
 import Sort from '../../components/sort/index';
 import Paginate from '../../components/pagination/index';
+//pidor
 
 // eslint-disable-next-line react/prop-types
 function Home({ searchValue }) {
