@@ -9,7 +9,7 @@ function index({ onChangePage }) {
       nextLabel=" >"
       previousLabel="< "
       onPageChange={(event) => onChangePage(event.selected + 1)}
-      pageRangeDisplayed={10}
+      pageRangeDisplayed={15}
       pageCount={3}
       renderOnZeroPageCount={null}
     />

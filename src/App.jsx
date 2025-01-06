@@ -1,12 +1,15 @@
 import Header from './components/header/index';
 import './app.scss';
 import { Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { createContext, useState } from 'react';
 import Home from './pages/Home/index'
 import Cart from './pages/Cart/index'
 import NotFound from './components/notFoundBlock/index'
 
 function App() {
+
+  const searchContext = createContext('');
+  console.log(searchContext)
 
   const [searchValue, setSearchValue] = useState('');
 

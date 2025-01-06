@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import './product.scss';
 
-function Product({ id, images, title, price, category, discountPercentage }) {
+function Product({ id, images, title, price, category, discountPercentage, rating }) {
+  const [state, setState] = useState(0);
+
   return (
     <div className="product__container">
       <img
@@ -18,7 +21,13 @@ function Product({ id, images, title, price, category, discountPercentage }) {
         <h2>Price: ${price}</h2>
         <h3>${discountPercentage}</h3>
       </div>
-      <div></div>
+      <div className="product__container__button">
+        <h2>rating: {rating}</h2>
+        <button onClick={() => setState(state + 1)}>
+          Добавить
+          <span>{state}</span>
+        </button>
+      </div>
     </div>
   );
 }

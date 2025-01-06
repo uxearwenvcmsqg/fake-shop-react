@@ -2,7 +2,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-	gap: 5px;
+	gap: 10px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 20px 0px;
   p {
     font-size: 22px;
     color: #7221eb;
@@ -22,6 +25,28 @@
       font-size: 16px;
       text-decoration: line-through;
       color: rgb(133, 130, 130);
+    }
+  }
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    h2 {
+      font-size: 16px;
+    }
+    button {
+      border: 1px solid #7846ec;
+      border-radius: 50px;
+      padding: 6px 14px;
+      font-size: 16px;
+      &:hover {
+        color: #fff;
+        background-color: #7846ec;
+      }
+      span {
+        font-size: 20px;
+        margin-left: 10px;
+      }
     }
   }
 }

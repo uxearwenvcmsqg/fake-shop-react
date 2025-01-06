@@ -14,15 +14,15 @@ function Home({ searchValue }) {
     name: 'популярности',
     sortProperty: 'rating',
   });
-  
+
   useEffect(() => {
     const order = sortType.sortProperty.includes('asc') ? 'desc' : 'asc';
     const sortBy = sortType.sortProperty.replace('asc', '');
-    const skipLogic = currentPage === 1 ? '' : currentPage === 2 ? 10 : currentPage === 3 ? 20 : '';
-
+    const skipLogic = currentPage === 1 ? '' : currentPage === 2 ? 15 : currentPage === 3 ? 30 : '';
+    
     const fetchProducts = async () => {
       try {
-        let url = `https://dummyjson.com/products?page=${currentPage}&limit=10&skip=${skipLogic}&sortBy=${sortBy}&order=${order}`;
+        let url = `https://dummyjson.com/products?page=${currentPage}&limit=15&skip=${skipLogic}&sortBy=${sortBy}&order=${order}`;
 
         if (category !== 'all') {
           url = `https://dummyjson.com/products/category/${category}?limit=5&sortBy=${sortBy}&order=${order}`;
