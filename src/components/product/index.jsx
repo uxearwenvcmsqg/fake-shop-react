@@ -9,8 +9,8 @@ function Product({ id, images, title, price, category, discountPercentage }) {
             ? images[0]
             : 'https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/19bafe9f-02df-45cf-bd43-296ee0fd11fc/anim=false,width=450/2024-06-24-09_16_1037430532215534.jpeg'
         }
-        width={150}
-        height={150}
+        width={90}
+        height={120}
       />
       <p>{title}</p>
       <span>Category: {category}</span>

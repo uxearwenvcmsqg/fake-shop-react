@@ -3,26 +3,29 @@ import { useState, useEffect } from 'react';
 import Categories from '../../components/categories';
 import Product from '../../components/product/index';
 import Sort from '../../components/sort/index';
+import Paginate from '../../components/pagination/index';
 
 // eslint-disable-next-line react/prop-types
 function Home({ searchValue }) {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
   const [sortType, setSortType] = useState({
     name: 'популярности',
     sortProperty: 'rating',
   });
-
+  
   useEffect(() => {
     const order = sortType.sortProperty.includes('asc') ? 'desc' : 'asc';
     const sortBy = sortType.sortProperty.replace('asc', '');
+    const skipLogic = currentPage === 1 ? '' : currentPage === 2 ? 10 : currentPage === 3 ? 20 : '';
 
     const fetchProducts = async () => {
       try {
-        let url = `https://dummyjson.com/products?sortBy=${sortBy}&order=${order}`;
+        let url = `https://dummyjson.com/products?page=${currentPage}&limit=10&skip=${skipLogic}&sortBy=${sortBy}&order=${order}`;
 
         if (category !== 'all') {
-          url = `https://dummyjson.com/products/category/${category}?sortBy=${sortBy}&order=${order}`;
+          url = `https://dummyjson.com/products/category/${category}?limit=5&sortBy=${sortBy}&order=${order}`;
         }
 
         fetch(url)
@@ -34,7 +37,7 @@ function Home({ searchValue }) {
     };
 
     fetchProducts();
-  }, [category, sortType, searchValue]);
+  }, [category, sortType, searchValue, currentPage]);
 
   //search for static data in backend (bad practice)
   const clothers = products
@@ -54,6 +57,9 @@ function Home({ searchValue }) {
         <Sort value={sortType} onChangeSort={(clickSort) => setSortType(clickSort)} />
       </div>
       <div className="container-clothers">{clothers}</div>
+      <div className="container-paginate">
+        <Paginate onChangePage={(number) => setCurrentPage(number)} />
+      </div>
     </>
   );
 }

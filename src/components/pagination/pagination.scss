@@ -1,0 +1,33 @@
+.pagination {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 50px;
+
+  li {
+    a {
+      width: 40px;
+      height: 40px;
+      font-size: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #7221eb;
+      border-radius: 50%;
+      cursor: pointer;
+      &:hover {
+        background-color: darken(#7846ec, 2%);
+        color: #fff;
+      }
+    }
+  }
+
+  .selected {
+    a {
+      background-color: darken(#7846ec, 2%);
+      color: #fff;
+    }
+  }
+}
