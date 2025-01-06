@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 function Sort({ value, onChangeSort }) {
   const [open, setOpen] = useState(false);
-
+  
   const listSort = [
     { name: 'популярности (ASC)', sortProperty: 'rating' },
     { name: 'популярности (DESC)', sortProperty: 'ratingasc' },

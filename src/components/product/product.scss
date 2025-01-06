@@ -1,10 +1,11 @@
 .product__container {
   display: flex;
   flex-direction: column;
+  align-items: center;
 	gap: 5px;
   p {
+    font-size: 22px;
     color: #7221eb;
-    font-size: 18px;
   }
   span {
     font-size: 18px;

@@ -4,14 +4,15 @@ import Categories from '../../components/categories';
 import Product from '../../components/product/index';
 import Sort from '../../components/sort/index';
 
-function Home() {
+// eslint-disable-next-line react/prop-types
+function Home({ searchValue }) {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState('all');
   const [sortType, setSortType] = useState({
     name: 'популярности',
     sortProperty: 'rating',
   });
-  
+
   useEffect(() => {
     const order = sortType.sortProperty.includes('asc') ? 'desc' : 'asc';
     const sortBy = sortType.sortProperty.replace('asc', '');
@@ -33,9 +34,18 @@ function Home() {
     };
 
     fetchProducts();
-  }, [category, sortType]);
+  }, [category, sortType, searchValue]);
 
-  const clothers = products.map((obj) => <Product key={obj.id} {...obj} />);
+  //search for static data in backend (bad practice)
+  const clothers = products
+    .filter((obj) => {
+      // eslint-disable-next-line react/prop-types
+      if (obj.title.toLowerCase().includes(searchValue.toLowerCase())) {
+        return true;
+      }
+      return false;
+    })
+    .map((obj) => <Product key={obj.id} {...obj} />);
 
   return (
     <>

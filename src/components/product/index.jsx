@@ -18,6 +18,7 @@ function Product({ id, images, title, price, category, discountPercentage }) {
         <h2>Price: ${price}</h2>
         <h3>${discountPercentage}</h3>
       </div>
+      <div></div>
     </div>
   );
 }

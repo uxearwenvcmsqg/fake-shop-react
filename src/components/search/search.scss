@@ -7,7 +7,11 @@
   width: 270px;
   height: 40px;
   padding: 0px 10px;
-
+  position: relative;
+  &__input {
+    position: absolute;
+    left: 50px;
+  }
   &:hover {
     border: 1px solid rgba(0, 0, 0, 0.2);
   }
