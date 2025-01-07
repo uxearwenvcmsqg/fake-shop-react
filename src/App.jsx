@@ -7,7 +7,7 @@ import Cart from './pages/Cart/index'
 import NotFound from './components/notFoundBlock/index'
 
 function App() {
-
+  
   const searchContext = createContext('');
   console.log(searchContext)
 

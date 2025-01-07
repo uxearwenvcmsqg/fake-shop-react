@@ -26,9 +26,9 @@ function Home({ searchValue }) {
         let url = `https://dummyjson.com/products?page=${currentPage}&limit=15&skip=${skipLogic}&sortBy=${sortBy}&order=${order}`;
 
         if (category !== 'all') {
-          url = `https://dummyjson.com/products/category/${category}?limit=5&sortBy=${sortBy}&order=${order}`;
+          url = `https://dummyjson.com/products/category/${category}?limit=10&sortBy=${sortBy}&order=${order}`;
         }
-
+        
         fetch(url)
           .then((response) => response.json())
           .then((data) => setProducts(data.products || []));
