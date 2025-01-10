@@ -1,13 +1,13 @@
 import './home.scss';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Categories from '../../components/categories';
 import Product from '../../components/product/index';
 import Sort from '../../components/sort/index';
 import Paginate from '../../components/pagination/index';
-//pidor
+import { SearchContext } from '../../App';
 
-// eslint-disable-next-line react/prop-types
-function Home({ searchValue }) {
+function Home() {
+  const { searchValue } = useContext(SearchContext);
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
@@ -20,7 +20,7 @@ function Home({ searchValue }) {
     const order = sortType.sortProperty.includes('asc') ? 'desc' : 'asc';
     const sortBy = sortType.sortProperty.replace('asc', '');
     const skipLogic = currentPage === 1 ? '' : currentPage === 2 ? 15 : currentPage === 3 ? 30 : '';
-    
+
     const fetchProducts = async () => {
       try {
         let url = `https://dummyjson.com/products?page=${currentPage}&limit=15&skip=${skipLogic}&sortBy=${sortBy}&order=${order}`;
@@ -28,7 +28,7 @@ function Home({ searchValue }) {
         if (category !== 'all') {
           url = `https://dummyjson.com/products/category/${category}?limit=10&sortBy=${sortBy}&order=${order}`;
         }
-        
+
         fetch(url)
           .then((response) => response.json())
           .then((data) => setProducts(data.products || []));
@@ -40,10 +40,8 @@ function Home({ searchValue }) {
     fetchProducts();
   }, [category, sortType, searchValue, currentPage]);
 
-  //search for static data in backend (bad practice)
   const clothers = products
     .filter((obj) => {
-      // eslint-disable-next-line react/prop-types
       if (obj.title.toLowerCase().includes(searchValue.toLowerCase())) {
         return true;
       }

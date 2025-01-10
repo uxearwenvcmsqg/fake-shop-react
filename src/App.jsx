@@ -2,27 +2,28 @@ import Header from './components/header/index';
 import './app.scss';
 import { Routes, Route } from 'react-router-dom';
 import { createContext, useState } from 'react';
-import Home from './pages/Home/index'
-import Cart from './pages/Cart/index'
-import NotFound from './components/notFoundBlock/index'
+import Home from './pages/Home/index';
+import Cart from './pages/Cart/index';
+import NotFound from './components/notFoundBlock/index';
+
+// eslint-disable-next-line react-refresh/only-export-components
+export const SearchContext = createContext('');
 
 function App() {
-  
-  const searchContext = createContext('');
-  console.log(searchContext)
-
   const [searchValue, setSearchValue] = useState('');
-  
+
   return (
     <div className="wrapper">
-      <Header value = {searchValue} setSearchValue = {setSearchValue}/>
-      <div className="container">
-        <Routes>
-          <Route path="/" element={<Home searchValue={searchValue}/>} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </div>
+      <SearchContext.Provider value={{ searchValue, setSearchValue }}>
+        <Header />
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+      </SearchContext.Provider>
     </div>
   );
 }

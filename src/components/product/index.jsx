@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './product.scss';
 
+// eslint-disable-next-line react/prop-types
 function Product({ id, images, title, price, category, discountPercentage, rating }) {
   const [state, setState] = useState(0);
 

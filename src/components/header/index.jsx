@@ -3,8 +3,7 @@ import cartIcon from '../../assets/cart.svg';
 import Search from '../search/index';
 import { Link } from 'react-router-dom';
 
-// eslint-disable-next-line react/prop-types
-function Header({ value, setSearchValue }) {
+function Header() {
   return (
     <header className="header">
       <Link to="/">
@@ -21,7 +20,7 @@ function Header({ value, setSearchValue }) {
           </div>
         </div>
       </Link>
-      <Search value={value} setSearchValue={setSearchValue}/>
+      <Search />
       <Link to="/cart">
         <div className="header__cart-icon">
           <span>180$</span>
