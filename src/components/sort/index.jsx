@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 function Sort({ value, onChangeSort }) {
   const [open, setOpen] = useState(false);
-  
+
   const listSort = [
     { name: 'популярности (ASC)', sortProperty: 'rating' },
     { name: 'популярности (DESC)', sortProperty: 'ratingasc' },
@@ -32,7 +32,6 @@ function Sort({ value, onChangeSort }) {
       {open && (
         <ul className="sort__popup">
           {listSort.map((obj, i) => (
-            // eslint-disable-next-line react/prop-types
             <li
               key={i}
               onClick={() => selectSortOption(obj)}

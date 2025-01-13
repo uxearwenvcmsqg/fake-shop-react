@@ -1,20 +1,31 @@
 import './home.scss';
-import { useState, useEffect, useContext } from 'react';
 import Categories from '../../components/categories';
 import Product from '../../components/product/index';
 import Sort from '../../components/sort/index';
 import Paginate from '../../components/pagination/index';
+
 import { SearchContext } from '../../App';
+import { useState, useEffect, useContext } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { setCategoryName } from '../../redux/slices/filterSlice';
 
 function Home() {
+  const categoryName = useSelector((state) => state.filter.categoryName);
+  const dispatch = useDispatch();
+
   const { searchValue } = useContext(SearchContext);
   const [products, setProducts] = useState([]);
-  const [category, setCategory] = useState('all');
+  // const [categoryName, setCategoryName] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
   const [sortType, setSortType] = useState({
     name: 'популярности',
     sortProperty: 'rating',
   });
+
+  const OnChangeCategory = (name) => {
+    console.log(name);
+  };
 
   useEffect(() => {
     const order = sortType.sortProperty.includes('asc') ? 'desc' : 'asc';
@@ -25,8 +36,8 @@ function Home() {
       try {
         let url = `https://dummyjson.com/products?page=${currentPage}&limit=15&skip=${skipLogic}&sortBy=${sortBy}&order=${order}`;
 
-        if (category !== 'all') {
-          url = `https://dummyjson.com/products/category/${category}?limit=10&sortBy=${sortBy}&order=${order}`;
+        if (categoryName !== 'all') {
+          url = `https://dummyjson.com/products/category/${categoryName}?limit=10&sortBy=${sortBy}&order=${order}`;
         }
 
         fetch(url)
@@ -38,7 +49,7 @@ function Home() {
     };
 
     fetchProducts();
-  }, [category, sortType, searchValue, currentPage]);
+  }, [categoryName, sortType, searchValue, currentPage]);
 
   const clothers = products
     .filter((obj) => {
@@ -52,7 +63,10 @@ function Home() {
   return (
     <>
       <div className="container-top">
-        <Categories value={category} onChangeCategory={(newCategory) => setCategory(newCategory)} />
+        <Categories
+          value={categoryName}
+          onChangeCategory={(value) => dispatch(setCategoryName(value))}
+        />
         <Sort value={sortType} onChangeSort={(clickSort) => setSortType(clickSort)} />
       </div>
       <div className="container-clothers">{clothers}</div>

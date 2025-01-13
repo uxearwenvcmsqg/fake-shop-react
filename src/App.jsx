@@ -1,10 +1,11 @@
-import Header from './components/header/index';
 import './app.scss';
-import { Routes, Route } from 'react-router-dom';
-import { createContext, useState } from 'react';
+import Header from './components/header/index';
 import Home from './pages/Home/index';
 import Cart from './pages/Cart/index';
 import NotFound from './components/notFoundBlock/index';
+
+import { Routes, Route } from 'react-router-dom';
+import { createContext, useState } from 'react';
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const SearchContext = createContext('');
