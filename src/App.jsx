@@ -3,6 +3,8 @@ import Header from './components/header/index';
 import Home from './pages/Home/index';
 import Cart from './pages/Cart/index';
 import NotFound from './components/notFoundBlock/index';
+import SignIn from './pages/auth/signIn/SignIn';
+import SignUp from './pages/auth/signUp/SignUp';
 
 import { Routes, Route } from 'react-router-dom';
 import { createContext, useState } from 'react';
@@ -22,6 +24,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="*" element={<NotFound />} />
+            <Route path="/signin" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
           </Routes>
         </div>
       </SearchContext.Provider>

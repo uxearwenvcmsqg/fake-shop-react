@@ -62,7 +62,7 @@ function Home() {
 
   return (
     <>
-      {/* <div className="container-top">
+      <div className="container-top">
         <Categories
           value={categoryName}
           onChangeCategory={(value) => dispatch(setCategoryName(value))}
@@ -72,7 +72,7 @@ function Home() {
       <div className="container-clothers">{clothers}</div>
       <div className="container-paginate">
         <Paginate onChangePage={(number) => setCurrentPage(number)} />
-      </div> */}
+      </div>
     </>
   );
 }

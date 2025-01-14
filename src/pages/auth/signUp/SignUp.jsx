@@ -1,13 +1,13 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
-import { auth } from '../../firebase/firebase';
+import { auth } from '../../../firebase/firebase';
 
 function SignUp() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [copyPassword, setCopyPassword] = useState('');
   const [error, setError] = useState('');
-
+  
   const register = (event) => {
     event.preventDefault();
     if (copyPassword !== password) {
@@ -48,7 +48,7 @@ function SignUp() {
           onChange={(event) => setCopyPassword(event.target.value)}
         />
         <button>Create</button>
-        {error ? <p style={{color: 'red'}}>Error: {error}</p> : ''}
+        {error ? <p style={{ color: 'red' }}>Error: {error}</p> : ''}
       </form>
     </div>
   );
