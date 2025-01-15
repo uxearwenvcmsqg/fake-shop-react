@@ -12,13 +12,13 @@ function AuthDetails() {
 
     return () => listen();
   }, []);
-
+  
   const userSignOut = () => {
     signOut(auth)
       .then(() => console.log('success'))
       .catch((e) => console.log(e));
   };
-
+  
   return (
     <div>
       {authUser ? (

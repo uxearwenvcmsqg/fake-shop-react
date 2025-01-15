@@ -1,13 +1,14 @@
 import { signInWithEmailAndPassword } from 'firebase/auth/cordova';
 import { useState } from 'react';
 import { auth } from '../../../firebase/firebase';
-import AuthDetails from '../authDetails/AuthDetails';
+import AuthDetails from '../authDetails/index';
+import './signIn.scss'
 
 function SignIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
-
+  
   const logIn = (event) => {
     event.preventDefault();
 
@@ -22,8 +23,8 @@ function SignIn() {
   };
 
   return (
-    <div>
-      <form>
+    <div className='signin-container'>
+      <form>  
         <h2>Log in</h2>
         <input
           type="text"

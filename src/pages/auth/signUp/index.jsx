@@ -1,6 +1,7 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 import { auth } from '../../../firebase/firebase';
+import './signUp.scss';
 
 function SignUp() {
   const [email, setEmail] = useState('');
@@ -26,7 +27,7 @@ function SignUp() {
   };
 
   return (
-    <div>
+    <div className='signup-container'>
       <form onSubmit={register}>
         <h2>Create an account</h2>
         <input

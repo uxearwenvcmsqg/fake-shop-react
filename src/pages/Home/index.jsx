@@ -14,20 +14,13 @@ import { setCategoryName } from '../../redux/slices/filterSlice';
 
 function Home() {
   const dispatch = useDispatch();
-  // const categoryName = useSelector((state) => state.filter.categoryName);
-  // const sortType = useSelector((state) => state.filter.sort.sortProperty);
   const { categoryName, sort } = useSelector((state) => state.filter);
   const sortType = sort.sortProperty;
 
   const { searchValue } = useContext(SearchContext);
   const [products, setProducts] = useState([]);
-  // const [categoryName, setCategoryName] = useState('all');
   const [currentPage, setCurrentPage] = useState(1);
-  // const [sortType, setSortType] = useState({
-  //   name: 'популярности',
-  //   sortProperty: 'rating',
-  // });
-
+  
   useEffect(() => {
     const order = sortType.includes('asc') ? 'desc' : 'asc';
     const sortBy = sortType.replace('asc', '');
@@ -49,6 +42,7 @@ function Home() {
     };
 
     fetchProducts();
+    window.scroll(0, 0);
   }, [categoryName, sortType, searchValue, currentPage]);
 
   const clothers = products

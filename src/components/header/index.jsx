@@ -1,6 +1,7 @@
 import './header.scss';
 import { Link } from 'react-router-dom';
 import cartIcon from '../../assets/cart.svg';
+import profile from '../../assets/profile.svg';
 import Search from '../search/index';
 
 function Header() {
@@ -21,20 +22,22 @@ function Header() {
         </div>
       </Link>
       <Search />
-      <Link to="/cart">
-        <div className="header__cart-icon">
-          <span>180$</span>
-          <span>/</span>
-          <span>2</span>
-          <img src={cartIcon} alt="" width={30} height={50} />
-        </div>
-      </Link>
-      <Link to="signin">
-        <button>Sign in</button>
-      </Link>
-      <Link to="signup">
-        <button>Sign up</button>
-      </Link>
+      <div className="header__container-actions">
+        <Link to="/cart">
+          <button className="header__container-actions__cart-icon">
+            <img src={cartIcon} alt="" width={25} height={25} />
+            <span>180$</span>
+            <span>/</span>
+            <span>2</span>
+          </button>
+        </Link>
+        <Link to="/profile">
+          <button className="header__container-actions__profile-icon">
+            <img src={profile} alt="profile" width={25} height={25} />
+            <span>Личный кабинет</span>
+          </button>
+        </Link>
+      </div>
     </header>
   );
 }

@@ -36,4 +36,34 @@
       margin-left: 10px;
     }
   }
+  &__container-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    &__cart-icon {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #000;
+      border-radius: 5px;
+      padding: 3px 15px;
+      gap: 5px;
+      &:hover {
+        background-color: #a4a3a7;
+        color: #fff;
+      }
+    }
+    &__profile-icon {
+      display: flex;
+      align-items: center;
+      border: 1px solid #000;
+      border-radius: 5px;
+      padding: 3px 15px;
+      gap: 5px;
+      &:hover {
+        background-color: #a4a3a7;
+        color: #fff;
+      }
+    }
+  }
 }

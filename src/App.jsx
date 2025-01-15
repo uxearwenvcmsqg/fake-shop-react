@@ -3,8 +3,9 @@ import Header from './components/header/index';
 import Home from './pages/Home/index';
 import Cart from './pages/Cart/index';
 import NotFound from './components/notFoundBlock/index';
-import SignIn from './pages/auth/signIn/SignIn';
-import SignUp from './pages/auth/signUp/SignUp';
+import SignIn from './pages/auth/signIn/index';
+import SignUp from './pages/auth/signUp/index';
+import Profile from './pages/profile/index'
 
 import { Routes, Route } from 'react-router-dom';
 import { createContext, useState } from 'react';
@@ -26,6 +27,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path='/profile' element={<Profile/>}/>
           </Routes>
         </div>
       </SearchContext.Provider>

@@ -17,6 +17,7 @@ const filterSlice = createSlice({
     },
     setSortType(state, action) {
       state.sort = action.payload
+      console.log(action)
     }
   },
 });
