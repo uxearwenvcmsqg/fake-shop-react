@@ -1,28 +1,35 @@
 import searchIcon from '../../assets/search.svg';
 import clearIcon from '../../assets/clear.svg';
 import './search.scss';
-import { useContext, useRef } from 'react';
+import { useContext, useRef, useCallback, useState } from 'react';
 import { SearchContext } from '../../App';
 import debounce from 'lodash.debounce';
 
 function Search() {
+  const [value, setValue] = useState('');
+  
   const onClickClear = () => {
-    setSearchValue('');
+    setSearchValue(''); //очистка глобально в app.js
+    setValue(''); //очистка локально в search
     inputRef.current.focus();
   };
 
-  const testDebounse = debounce((debounce) => {
-    console.log('test debounce: ', debounce);
-  }, 2000);
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const searchDebounce = useCallback(
+    debounce((str) => {
+      setSearchValue(str);
+    }, 500),
+    [],
+  );
+  
   const onChangeInput = (event) => {
-    setSearchValue(event.target.value);
-    testDebounse();
+    setValue(event.target.value);
+    searchDebounce(event.target.value);
   };
-
-  const { searchValue, setSearchValue } = useContext(SearchContext);
+  
+  const { setSearchValue } = useContext(SearchContext);
   const inputRef = useRef();
-
+  
   return (
     <div className="search">
       <img className="search__iconSearch" src={searchIcon} alt="search" width={25} height={25} />
@@ -31,10 +38,12 @@ function Search() {
         className="search__input"
         type="text"
         placeholder="поиск..."
-        value={searchValue}
-        onChange={(event) => setSearchValue(event.target.value)}
+        value={value}
+        onChange={(event) => {
+          onChangeInput(event);
+        }}
       />
-      {searchValue && (
+      {value && (
         <img
           className="search__iconClear"
           src={clearIcon}

@@ -20,7 +20,7 @@ function Home() {
   const { searchValue } = useContext(SearchContext);
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  
+
   useEffect(() => {
     const order = sortType.includes('asc') ? 'desc' : 'asc';
     const sortBy = sortType.replace('asc', '');
@@ -43,7 +43,7 @@ function Home() {
 
     fetchProducts();
     window.scroll(0, 0);
-  }, [categoryName, sortType, searchValue, currentPage]);
+  }, [categoryName, sortType, currentPage]);
 
   const clothers = products
     .filter((obj) => {
